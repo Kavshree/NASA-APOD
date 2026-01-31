@@ -1,0 +1,24 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column;
+    }
+}
+
+/*Datepicker*/
+input[type="date"] {
+    background-color: transparent;
+    color: var(--color4);
+    border: 1px solid var(--colorPink); 
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+     color-scheme: dark;
+}

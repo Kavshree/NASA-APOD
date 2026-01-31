@@ -1,0 +1,9 @@
+@import './variables.css';
+
+@keyframes mymove {
+  from {background-color: black;}
+  to {background-color: var(--color1);}
+}
+
+
+

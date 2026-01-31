@@ -1,0 +1,35 @@
+@property --color1 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #03001C;
+}
+
+@property --color1Transparent {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: rgba(255,255,255,0.4); /*rgba(3, 0, 28, 0.4);*/
+}
+
+@property --color2 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #301E67;
+}
+
+@property --color3 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #5B8FB9;
+}
+
+@property --color4 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #B6EADA;
+}
+
+@property --colorPink {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #FF5FCF
+}

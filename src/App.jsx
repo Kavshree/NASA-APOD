@@ -1,0 +1,28 @@
+import { useState } from 'react'
+import './App.css'
+import { DatePicker } from './components/DatePicker/DatePicker'
+import { Pictures } from './components/Pictures/Pictures';
+import { Footer } from './components/Footer/Footer';
+
+function App() {
+  const [fromDate, setFrom] = useState(null);
+  const [toDate, setTo] = useState(null);
+
+  return (
+    <div className="App">
+      <div className="main">
+        <div className="title">
+        <h1>COSMOS EXPLORER</h1>
+        <h4>Explore the Universe • NASA Astronomy Picture Archive</h4>
+        </div>
+        <section>
+          <DatePicker dates={ {setFrom, setTo } } />
+          <Pictures dates={{fromDate, toDate}} />
+        </section>
+      </div>
+     <Footer />
+    </div>
+  )
+}
+
+export default App
