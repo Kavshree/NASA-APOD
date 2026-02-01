@@ -104,6 +104,7 @@ export const DatePicker = ({ dates }) => {
                         <span className="color1"><strong>From Date</strong></span>
                         <input
                             type="date"
+                            placeholder="Select a Date"
                             id={fromDateId}
                             ref={fromDateRef}
                             max={toDate || today}
@@ -114,6 +115,7 @@ export const DatePicker = ({ dates }) => {
                         <span className="color1"><strong>To Date</strong></span>
                         <input
                             type="date"
+                            placeholder="Select a Date"
                             id={toDateId}
                             ref={toDateRef}
                             min={fromDate}
@@ -129,6 +131,7 @@ export const DatePicker = ({ dates }) => {
                         <span className="color1"><strong>Select Date</strong></span>
                         <input
                             type="date"
+                            placeholder="Select a Date"
                             id={singleDateId}
                             ref={singleDateRef}
                             max={today}
