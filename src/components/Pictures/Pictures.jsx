@@ -8,6 +8,7 @@ export const Pictures = ({ dates }) => {
     const [loading, setLoading] = useState(false);
     const [selectedPicture, setSelectedPicture] = useState(null);
     const [isPending, startTransition] = useTransition();
+    const [userSearched, setUserSearched] = useState(false);
 
     useEffect(() => {
         if (dates.fromDate && dates.toDate) {
@@ -15,9 +16,10 @@ export const Pictures = ({ dates }) => {
             getImagesFromRange(dates.fromDate, dates.toDate)
                 .then((res) => res.json())
                 .then((res) => {
-                    setLoading(false)
+                    setUserSearched(() => true)
+                    setLoading(() => false)
                     startTransition(() => {
-                        setPictureData(res);
+                        setPictureData(() => res);
                     })
                 });
         }
@@ -42,17 +44,23 @@ export const Pictures = ({ dates }) => {
     return (
         <>
             <div className="pictures-container">
-                { (pictureData.length === 0) &&
+                { (pictureData.length === 0 && userSearched) &&
                     <div className="no-images-message">
                         👀 <br/>
                          The universe must be on a coffee break<br/>
                          Pick another date range!
                     </div>
                 }
+
+                { (pictureData.length === 0 && !userSearched) &&
+                    <div className="no-search-message">
+                        Time travel through NASA's archives. Pick any date
+                    </div>
+                }
                 {(pictureData.length > 0) &&
                     pictureData.map((picture, index) => (
                         <figure key={index} className="picture-item" onClick={() => openModal(picture)}>
-                             {(picture.url && pictureData.media_type === "image") && <a>
+                             {(picture.url && picture.media_type === "image") && <a>
                                 <img src={picture.url} alt={picture.title} />
                             </a> }
                             {(picture.url && picture.media_type === "video") && <a href={picture.url} target="_blank">

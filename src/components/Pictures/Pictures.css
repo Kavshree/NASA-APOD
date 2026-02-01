@@ -72,7 +72,7 @@ a {
     padding-right: 7px;
 }
 
-.no-images-message {
+.no-images-message, .no-search-message {
     border: 1px solid var(--colorPink);
     padding: 0.5rem;
     border-radius: 7px;
@@ -80,5 +80,8 @@ a {
     align-items: center;
     color: var(--color1);
     background: var(--color1Transparent);
+}
+
+.no-images-message {
     font-size: larger;
 }
