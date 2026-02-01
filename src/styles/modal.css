@@ -24,6 +24,13 @@
     width: 90%; 
 }
 
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 65%;
+        padding: 0.5rem;
+    }
+}
+
 .modal-content img {
     width: 100%;
     height: auto;
