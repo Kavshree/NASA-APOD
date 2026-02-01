@@ -28,6 +28,14 @@ input[type="date"] {
      color-scheme: dark;
 }
 
+@media (max-width: 768px) {
+    input[type="date"] {
+        width: 100%;
+        padding-right: 0px;
+    }
+}
+
+
 input[type="radio"] {
     accent-color: var(--colorPink);
     color-scheme: dark;
