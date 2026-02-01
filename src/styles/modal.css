@@ -25,6 +25,11 @@
     font-size: smaller;
 }
 
+.modal-content a {
+    color: var(--color4);
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
     .modal-content {
         max-width: 65%;

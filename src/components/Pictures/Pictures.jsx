@@ -23,10 +23,6 @@ export const Pictures = ({ dates }) => {
         }
     }, [dates.fromDate, dates.toDate]);
 
-    const truncateText = (text, maxLength) => {
-        return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
-    };
-
     const openModal = (picture) => {
         setSelectedPicture(picture);
     };
@@ -46,11 +42,16 @@ export const Pictures = ({ dates }) => {
     return (
         <>
             <div className="pictures-container">
-                {pictureData.length > 0 &&
+                {(pictureData.length > 0 && pictureData.media_type !== "video") &&
                     pictureData.map((picture, index) => (
                         <figure key={index} className="picture-item" onClick={() => openModal(picture)}>
-                             {picture.url && <a>
+                             {(picture.url && pictureData.media_type === "image") && <a>
                                 <img src={picture.url} alt={picture.title} />
+                            </a> }
+                            {(picture.url && picture.media_type === "video") && <a href={picture.url} target="_blank">
+                                <span className="no-img">
+                                 <span className="middle">Watch on YouTube</span>
+                                </span>
                             </a> }
                             {!picture.url && <span className="no-img">
                                 <span className="middle">No image found</span>
@@ -70,7 +71,14 @@ export const Pictures = ({ dates }) => {
                         <button className="close-button" onClick={closeModal}>
                             &times;
                         </button>
-                        <img src={selectedPicture.url} alt={selectedPicture.title} />
+                         {(selectedPicture.url && selectedPicture.media_type === "video") && <a href={selectedPicture.url} target="_blank">
+                            <span className="no-img">
+                                 <span className="middle">Watch on YouTube</span>
+                            </span>
+                        </a> }
+                        {(selectedPicture.url && selectedPicture.media_type === "image") &&
+                            <img src={selectedPicture.url} alt={selectedPicture.title} />
+                        }
                         <h2>{selectedPicture.title}</h2>
                         <p>{selectedPicture.explanation}</p>
                     </div>

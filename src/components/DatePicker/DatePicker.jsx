@@ -10,7 +10,7 @@ export const DatePicker = ({ dates }) => {
     const toDateId = useId();
     const singleDateId = useId();
     const [modal, setModal] = useState(null);
-    const [dateMode, setDateMode] = useState('range');
+    const [dateMode, setDateMode] = useState('single');
     const [fromDate, setFromDate] = useState('');
     const [toDate, setToDate] = useState('');
     const today = new Date().toISOString().slice(0, 10);
@@ -74,6 +74,16 @@ export const DatePicker = ({ dates }) => {
         <>
         <div>
             <div className="mode-selector">
+                     <label>
+                        <input
+                            type="radio"
+                            name="dateMode"
+                            value="single"
+                            checked={dateMode === 'single'}
+                            onChange={handleModeChange}
+                        />
+                        Single Date
+                    </label>
                     <label>
                         <input
                             type="radio"
@@ -84,16 +94,7 @@ export const DatePicker = ({ dates }) => {
                         />
                         Range
                     </label>
-                    <label>
-                        <input
-                            type="radio"
-                            name="dateMode"
-                            value="single"
-                            checked={dateMode === 'single'}
-                            onChange={handleModeChange}
-                        />
-                        Single Date
-                    </label>
+                    
                 </div>
         </div>
             <div className="wrapper">

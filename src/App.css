@@ -26,6 +26,10 @@ body {
   text-align: left;
 }
 
+.text-shadow {
+  text-shadow: 1px 1px 0px var(--color1Transparent);
+}
+
 .main {
   border: 1px solid var(--colorPink);
   background: var(--color1Transparent);

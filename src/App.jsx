@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <div className="main">
         <div className="title">
-        <h1>COSMOS EXPLORER</h1>
+        <h1 className="text-shadow">COSMOS EXPLORER</h1>
         <h4>Explore the Universe • NASA Astronomy Picture Archive</h4>
         </div>
         <section>
