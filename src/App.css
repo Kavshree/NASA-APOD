@@ -37,6 +37,12 @@ body {
   min-height: 100vh;
 }
 
+@media (max-width: 768px) {
+    .main {
+        margin: 1rem;
+    }
+}
+
 .middle {
   vertical-align: middle;
 }
