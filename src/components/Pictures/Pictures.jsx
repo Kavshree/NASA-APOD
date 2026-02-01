@@ -19,7 +19,7 @@ export const Pictures = ({ dates }) => {
                     if (!res.ok) {
                         throw new Error(`HTTP error! status: ${res.status}`);
                     }
-                    res.json()
+                    return res.json()
                 })
                 .then((res) => {
                     setUserSearched(() => true)
@@ -29,9 +29,9 @@ export const Pictures = ({ dates }) => {
                     })
                 })
                 .catch(error => {
-                    setPictureData([]);
-                setUserSearched(true);
-                setLoading(false);
+                    setPictureData(() => []);
+                    setUserSearched(() => true);
+                    setLoading(() => false);
                 })
         }
     }, [dates.fromDate, dates.toDate]);
@@ -63,11 +63,11 @@ export const Pictures = ({ dates }) => {
     return (
         <>
         <div className="pictures-container">
-            {(dates.fromDate === today && dates.fromDate === today && pictureData.length > 0) && 
+            {(dates.fromDate === today && dates.fromDate === today && pictureData?.length > 0) && 
             <p className="today-pic text-shadow">Today from Space</p>}
         </div>
             <div className="pictures-container">
-                { (pictureData.length === 0 && userSearched) &&
+                { (pictureData?.length === 0 && userSearched) &&
                     <div className="no-images-message">
                         👀 <br/>
                          The universe must be on a coffee break<br/>
@@ -75,7 +75,7 @@ export const Pictures = ({ dates }) => {
                     </div>
                 }
 
-                { (pictureData.length === 0 && !userSearched) &&
+                { (pictureData?.length === 0 && !userSearched) &&
                     <div className="no-search-message">
                         Time travel through NASA's archives. Pick any date <br/>
                         Or <br/>
@@ -83,7 +83,7 @@ export const Pictures = ({ dates }) => {
                     </div>
                 }
                 
-                {(pictureData.length > 0) &&
+                {(pictureData?.length > 0) &&
                     pictureData.map((picture, index) => (
                         <figure key={index} className="picture-item" onClick={() => openModal(picture)}>
                              {(picture.url && picture.media_type === "image") && <a>
