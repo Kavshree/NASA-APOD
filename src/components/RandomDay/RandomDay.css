@@ -1,0 +1,27 @@
+.random-wrapper {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: var(--color1LessTransparent);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 3rem;
+    border: 1px solid var(--colorPink);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 900; 
+}
+
+@media (max-width: 768px) {
+    .random-wrapper {
+        bottom: 20px;
+        right: 20px;
+        font-size: 2rem;
+        padding: 7px;
+    }
+}
+
+.random-wrapper:hover {
+    background: var(--color1);
+    transform: scale(1.1);
+}

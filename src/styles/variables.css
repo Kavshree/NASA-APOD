@@ -10,6 +10,12 @@
   initial-value: rgba(255,255,255,0.4); /*rgba(3, 0, 28, 0.4);*/
 }
 
+@property --color1LessTransparent {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: rgba(0,0,0,0.6); /*rgba(3, 0, 28, 0.4);*/
+}
+
 @property --color2 {
   syntax: '<color>';
   inherits: false;

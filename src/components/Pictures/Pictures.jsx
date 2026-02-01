@@ -33,6 +33,14 @@ export const Pictures = ({ dates }) => {
         setSelectedPicture(null);
     };
 
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = date.toLocaleString('default', { month: 'short' });
+        const day = date.getDate();
+        return `${day} ${month} ${year}`;
+        };
+
     if(isPending || loading) {
         return (
             <div className="pictures-container">
@@ -54,7 +62,9 @@ export const Pictures = ({ dates }) => {
 
                 { (pictureData.length === 0 && !userSearched) &&
                     <div className="no-search-message">
-                        Time travel through NASA's archives. Pick any date
+                        Time travel through NASA's archives. Pick any date <br/>
+                        Or <br/>
+                        Roll the dice below for a random cosmic adventure
                     </div>
                 }
                 {(pictureData.length > 0) &&
@@ -73,7 +83,7 @@ export const Pictures = ({ dates }) => {
                                 </span>}
                             <figcaption>{picture.title}</figcaption>
                             <div className="card-footer">
-                                <p>{picture.date}</p>
+                                <p>{formatDate(picture.date)}</p>
                                 {picture.hdurl && <a target="_blank" href={picture.hdurl} onClick={(e) => e.stopPropagation()}>HD image</a>}
                             </div>
                         </figure>

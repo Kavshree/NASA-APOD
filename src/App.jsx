@@ -3,6 +3,7 @@ import './App.css'
 import { DatePicker } from './components/DatePicker/DatePicker'
 import { Pictures } from './components/Pictures/Pictures';
 import { Footer } from './components/Footer/Footer';
+import { RandomDay } from './components/RandomDay/RandomDay';
 
 function App() {
   const [fromDate, setFrom] = useState(null);
@@ -18,6 +19,7 @@ function App() {
         <section>
           <DatePicker dates={ {setFrom, setTo } } />
           <Pictures dates={{fromDate, toDate}} />
+          <RandomDay dates={ {setFrom, setTo } }/>
         </section>
       </div>
      <Footer />
