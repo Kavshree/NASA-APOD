@@ -9,6 +9,7 @@ export const Pictures = ({ dates }) => {
     const [selectedPicture, setSelectedPicture] = useState(null);
     const [isPending, startTransition] = useTransition();
     const [userSearched, setUserSearched] = useState(false);
+    const today = new Date().toISOString().slice(0, 10);
 
     useEffect(() => {
         if (dates.fromDate && dates.toDate) {
@@ -51,6 +52,10 @@ export const Pictures = ({ dates }) => {
 
     return (
         <>
+        <div className="pictures-container">
+            {(dates.fromDate === today && dates.fromDate === today && pictureData.length > 0) && 
+            <p className="today-pic text-shadow">Today from Space</p>}
+        </div>
             <div className="pictures-container">
                 { (pictureData.length === 0 && userSearched) &&
                     <div className="no-images-message">
@@ -67,8 +72,10 @@ export const Pictures = ({ dates }) => {
                         Roll the dice below for a random cosmic adventure
                     </div>
                 }
+                
                 {(pictureData.length > 0) &&
                     pictureData.map((picture, index) => (
+                        <>
                         <figure key={index} className="picture-item" onClick={() => openModal(picture)}>
                              {(picture.url && picture.media_type === "image") && <a>
                                 <img src={picture.url} alt={picture.title} />
@@ -87,6 +94,7 @@ export const Pictures = ({ dates }) => {
                                 {picture.hdurl && <a target="_blank" href={picture.hdurl} onClick={(e) => e.stopPropagation()}>HD image</a>}
                             </div>
                         </figure>
+                        </>
                     ))}
             </div>
 

@@ -6,8 +6,9 @@ import { Footer } from './components/Footer/Footer';
 import { RandomDay } from './components/RandomDay/RandomDay';
 
 function App() {
-  const [fromDate, setFrom] = useState(null);
-  const [toDate, setTo] = useState(null);
+  const today = new Date().toISOString().slice(0, 10);
+  const [fromDate, setFrom] = useState(today);
+  const [toDate, setTo] = useState(today);
 
   return (
     <div className="App">
