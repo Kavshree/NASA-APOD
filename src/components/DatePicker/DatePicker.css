@@ -29,11 +29,27 @@ input[type="date"] {
 }
 
 input[type="radio"] {
-    accent-color: var(--color1Transparent); 
+    accent-color: var(--colorPink);
+    color-scheme: dark;
+    appearance: none; 
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color1);
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right: 0.5rem;
 }
+
+input[type="radio"]:checked {
+    background-color: var(--colorPink); 
+    border-color: var(--colorPink);
+}
+
 .mode-selector label {
     color: var(--color1);
     font-weight: bold;
+    cursor: pointer;
 }
 input[type="radio"], .mode-selector label {
     cursor: pointer;

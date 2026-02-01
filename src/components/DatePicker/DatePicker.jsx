@@ -11,6 +11,9 @@ export const DatePicker = ({ dates }) => {
     const singleDateId = useId();
     const [modal, setModal] = useState(null);
     const [dateMode, setDateMode] = useState('range');
+    const [fromDate, setFromDate] = useState('');
+    const [toDate, setToDate] = useState('');
+    const today = new Date().toISOString().slice(0, 10);
 
     const handleDateClick = (rangeVal, ref) => {
         if (ref.current && ref.current.showPicker) {
@@ -23,6 +26,16 @@ export const DatePicker = ({ dates }) => {
         dates.setFrom('');
         dates.setTo('');
         setModal(null);
+        setFromDate('');
+        setToDate('');
+    };
+
+    const handleFromChange = (e) => {
+        setFromDate(e.target.value);
+    };
+
+    const handleToChange = (e) => {
+        setToDate(e.target.value);
     };
 
     const explore = () => {
@@ -56,7 +69,7 @@ export const DatePicker = ({ dates }) => {
         }
         setModal(null);
     };
-
+    
     return (
         <>
         <div>
@@ -93,6 +106,8 @@ export const DatePicker = ({ dates }) => {
                             type="date"
                             id={fromDateId}
                             ref={fromDateRef}
+                            max={toDate || today}
+                            onChange={handleFromChange}
                             onClick={() => handleDateClick('from', fromDateRef)}
                         />
 
@@ -101,6 +116,9 @@ export const DatePicker = ({ dates }) => {
                             type="date"
                             id={toDateId}
                             ref={toDateRef}
+                            min={fromDate}
+                            max={today}
+                            onChange={handleToChange}
                             onClick={() => handleDateClick('to', toDateRef)}
                         />
                     </>
@@ -113,6 +131,7 @@ export const DatePicker = ({ dates }) => {
                             type="date"
                             id={singleDateId}
                             ref={singleDateRef}
+                            max={today}
                             onClick={() => handleDateClick('single', singleDateRef)}
                         />
                     </>
