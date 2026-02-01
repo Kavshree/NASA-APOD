@@ -42,7 +42,14 @@ export const Pictures = ({ dates }) => {
     return (
         <>
             <div className="pictures-container">
-                {(pictureData.length > 0 && pictureData.media_type !== "video") &&
+                { (pictureData.length === 0) &&
+                    <div className="no-images-message">
+                        👀 <br/>
+                         The universe must be on a coffee break<br/>
+                         Pick another date range!
+                    </div>
+                }
+                {(pictureData.length > 0) &&
                     pictureData.map((picture, index) => (
                         <figure key={index} className="picture-item" onClick={() => openModal(picture)}>
                              {(picture.url && pictureData.media_type === "image") && <a>

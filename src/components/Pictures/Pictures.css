@@ -7,7 +7,6 @@
     margin-top: 2rem;
     justify-content: center;
     text-overflow: ellipsis; overflow: hidden;
-    cursor: pointer;
 }
 
 .picture-item {
@@ -71,4 +70,15 @@ a {
     text-decoration: underline;
     color: var(--color3);
     padding-right: 7px;
+}
+
+.no-images-message {
+    border: 1px solid var(--colorPink);
+    padding: 0.5rem;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    color: var(--color1);
+    background: var(--color1Transparent);
+    font-size: larger;
 }
