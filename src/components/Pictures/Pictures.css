@@ -28,6 +28,13 @@ img {
     object-fit: cover;
 }
 
+.no-img {
+    height: 250px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 figure {
      margin: 0;
 }

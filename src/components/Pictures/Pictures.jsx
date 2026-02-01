@@ -1,18 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { getImagesFromRange } from "../../services/shared.service";
 import "./Pictures.css";
+import { SkeletonLoader } from "../SkeletonLoader/SkeletonLoader";
 
 export const Pictures = ({ dates }) => {
     const [pictureData, setPictureData] = useState([]);
+    const [loading, setLoading] = useState(false);
     const [selectedPicture, setSelectedPicture] = useState(null);
+    const [isPending, startTransition] = useTransition();
 
     useEffect(() => {
         if (dates.fromDate && dates.toDate) {
+            setLoading(true)
             getImagesFromRange(dates.fromDate, dates.toDate)
                 .then((res) => res.json())
                 .then((res) => {
-                    console.log(res);
-                    setPictureData(res);
+                    setLoading(false)
+                    startTransition(() => {
+                        setPictureData(res);
+                    })
                 });
         }
     }, [dates.fromDate, dates.toDate]);
@@ -29,19 +35,30 @@ export const Pictures = ({ dates }) => {
         setSelectedPicture(null);
     };
 
+    if(isPending || loading) {
+        return (
+            <div className="pictures-container">
+                <SkeletonLoader />
+            </div>
+        )
+    }
+
     return (
         <>
             <div className="pictures-container">
                 {pictureData.length > 0 &&
                     pictureData.map((picture, index) => (
                         <figure key={index} className="picture-item" onClick={() => openModal(picture)}>
-                            <a>
+                             {picture.url && <a>
                                 <img src={picture.url} alt={picture.title} />
-                            </a>
+                            </a> }
+                            {!picture.url && <span className="no-img">
+                                <span className="middle">No image found</span>
+                                </span>}
                             <figcaption>{picture.title}</figcaption>
                             <div className="card-footer">
                                 <p>{picture.date}</p>
-                                <a target="_blank" href={picture.hdurl} onClick={(e) => e.stopPropagation()}>HD image</a>
+                                {picture.hdurl && <a target="_blank" href={picture.hdurl} onClick={(e) => e.stopPropagation()}>HD image</a>}
                             </div>
                         </figure>
                     ))}

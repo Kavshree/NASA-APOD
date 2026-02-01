@@ -37,6 +37,10 @@ body {
   min-height: 100vh;
 }
 
+.middle {
+  vertical-align: middle;
+}
+
 .App {
   min-height: 100vh;
   display: flex;
