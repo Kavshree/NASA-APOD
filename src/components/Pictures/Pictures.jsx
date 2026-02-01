@@ -15,14 +15,24 @@ export const Pictures = ({ dates }) => {
         if (dates.fromDate && dates.toDate) {
             setLoading(true)
             getImagesFromRange(dates.fromDate, dates.toDate)
-                .then((res) => res.json())
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error(`HTTP error! status: ${res.status}`);
+                    }
+                    res.json()
+                })
                 .then((res) => {
                     setUserSearched(() => true)
                     setLoading(() => false)
                     startTransition(() => {
                         setPictureData(() => res);
                     })
-                });
+                })
+                .catch(error => {
+                    setPictureData([]);
+                setUserSearched(true);
+                setLoading(false);
+                })
         }
     }, [dates.fromDate, dates.toDate]);
 
@@ -75,7 +85,6 @@ export const Pictures = ({ dates }) => {
                 
                 {(pictureData.length > 0) &&
                     pictureData.map((picture, index) => (
-                        <>
                         <figure key={index} className="picture-item" onClick={() => openModal(picture)}>
                              {(picture.url && picture.media_type === "image") && <a>
                                 <img src={picture.url} alt={picture.title} />
@@ -94,7 +103,6 @@ export const Pictures = ({ dates }) => {
                                 {picture.hdurl && <a target="_blank" href={picture.hdurl} onClick={(e) => e.stopPropagation()}>HD image</a>}
                             </div>
                         </figure>
-                        </>
                     ))}
             </div>
 
