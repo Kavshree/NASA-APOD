@@ -27,3 +27,21 @@ input[type="date"] {
     cursor: pointer;
      color-scheme: dark;
 }
+
+input[type="radio"] {
+    accent-color: var(--color1Transparent); 
+}
+.mode-selector label {
+    color: var(--color1);
+    font-weight: bold;
+}
+input[type="radio"], .mode-selector label {
+    cursor: pointer;
+}
+
+.mode-selector {
+    margin-top: 1rem;
+    
+}
+
+
