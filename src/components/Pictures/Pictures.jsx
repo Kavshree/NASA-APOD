@@ -40,7 +40,7 @@ export const Pictures = ({ dates }) => {
                             </a>
                             <figcaption>{picture.title}</figcaption>
                             <div className="card-footer">
-                                <p>Clicked on: {picture.date}</p>
+                                <p>{picture.date}</p>
                                 <a target="_blank" href={picture.hdurl} onClick={(e) => e.stopPropagation()}>HD image</a>
                             </div>
                         </figure>

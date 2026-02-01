@@ -41,7 +41,7 @@ export const DatePicker = ({dates}) => {
     return (
         <>
         <div className="wrapper">
-            From Date
+            <span className="color1"><strong>From Date</strong></span>
             <input
                 type="date"
                 id={fromDateId}
@@ -49,7 +49,7 @@ export const DatePicker = ({dates}) => {
                 onClick={() => handleDateClick('from', fromDateRef)}
             />
 
-            To Date
+            <span className="color1"><strong>To Date</strong></span>
             <input
                 type="date"
                 id={toDateId}
